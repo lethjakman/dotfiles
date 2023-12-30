@@ -1,0 +1,103 @@
+- name: Bootstrap development environment
+  hosts: localhost
+ 
+  # ansible-galaxy collection install community.general
+  tasks:
+  - name: Install packages with brew
+    become: no
+    community.general.homebrew:
+      name:
+        - git
+        - tmux
+        - nvim
+        - lazygit
+        - the_silver_searcher
+        - ripgrep
+        - stow
+        - fzf
+        - asdf
+        - zsh-completions
+      state: present
+    when: ansible_distribution == "MacOSX"
+
+  - name: Fetch nvchad
+    become: no
+    ansible.builtin.git:
+      depth: 1
+      dest: ~/.config/nvim
+      repo: https://github.com/NvChad/NvChad
+
+  - name: Fetch p10k
+    become: no
+    ansible.builtin.git:
+      depth: 1
+      dest: ~/powerlevel10k
+      repo: https://github.com/romkatv/powerlevel10k.git
+
+  # Install fzf 
+  - name: install fzf
+    shell: 
+      cmd: "$(brew --prefix)/opt/fzf/install"
+
+  # Zsh Plugins
+  - name: fetch zsh-syntax-highlighting
+    become: no
+    ansible.builtin.git:
+      depth: 1
+      dest: ~/.zsh-plugins/zsh-syntax-highlighting
+      repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+  - name: fetch zsh-autosuggestions 
+    become: no
+    ansible.builtin.git:
+      depth: 1
+      dest: ~/.zsh-plugins/zsh-autosuggestions
+      repo: https://github.com/zsh-users/zsh-autosuggestions
+
+  - name: fetch zsh-z
+    become: no
+    ansible.builtin.git:
+      depth: 1
+      dest: ~/.zsh-plugins/zsh-z
+      repo: https://github.com/agkozak/zsh-z.git
+
+  - name: fetch zsh-vi-mode
+    become: no
+    ansible.builtin.git:
+      depth: 1
+      dest: ~/.zsh-plugins/zsh-vi-mode
+      repo: https://github.com/jeffreytse/zsh-vi-mode
+
+  # Oh My tmux
+  - name: Setup tmux
+    become: no
+    ansible.builtin.git:
+      depth: 1
+      dest: ~/.tmux
+      repo: https://github.com/gpakosz/.tmux.git
+
+  - name: Symlink tmux
+    ansible.builtin.file:
+      state: "link"
+      src: ~/.tmux/.tmux.conf
+      dest: ~/.tmux.conf
+    
+  # - name: stow dotfiles
+  #   ansible.builtin.shell:
+  #     cmd: "stow -d $HOME/dotfiles -t ~/ {{ item }}"
+  #   loop: "{{ stow }}"
+  - name: Run stow
+    shell: 
+      cmd: "stow {{ item }} --target {{ ansible_env.HOME }} --verbose=2"
+    register: result
+    changed_when: 'result.stderr is search("LINK: ")'
+    loop: 
+      - neovim
+      - tmux
+      - zsh
+        
+# TODO
+# git clone https://github.com/gpakosz/.tmux.git                                                     
+# ln -s -f .tmux/.tmux.conf
+#
+# fzf
