@@ -70,7 +70,6 @@ local plugins = {
   {
     "kdheepak/lazygit.nvim",
     enabled = true,
-    lazy = false,
     keys = {
       { "<leader>gg", "<cmd>:LazyGit<cr>", desc = "LazyGit" },
     },
