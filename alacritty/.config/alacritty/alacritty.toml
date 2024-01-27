@@ -25,3 +25,5 @@ style = "Bold Italic"
 family = "MesloLGM Nerd Font Mono"
 style = "Italic"
 
+[window]
+option_as_alt = "Both"
