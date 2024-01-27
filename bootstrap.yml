@@ -3,6 +3,12 @@
  
   # ansible-galaxy collection install community.general
   tasks:
+    - name: Install packages with brew
+      become: no
+      community.general.homebrew_cask:
+        name:
+          - homebrew/cask-fonts/font-meslo-lg-nerd-font
+          - alacritty
 
     - name: Install packages with brew
       become: no
