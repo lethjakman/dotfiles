@@ -78,6 +78,11 @@ local plugins = {
       "nvim-lua/plenary.nvim",
     },
   },
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^3', -- Recommended
+    ft = { 'rust' },
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
