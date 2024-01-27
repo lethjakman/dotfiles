@@ -3,22 +3,6 @@
  
   # ansible-galaxy collection install community.general
   tasks:
-  - name: Install packages with brew
-    become: no
-    community.general.homebrew:
-      name:
-        - git
-        - tmux
-        - nvim
-        - lazygit
-        - the_silver_searcher
-        - ripgrep
-        - stow
-        - fzf
-        - asdf
-        - zsh-completions
-      state: present
-    when: ansible_distribution == "MacOSX"
 
   - name: Fetch nvchad
     become: no
@@ -26,6 +10,24 @@
       depth: 1
       dest: ~/.config/nvim
       repo: https://github.com/NvChad/NvChad
+    - name: Install packages with brew
+      become: no
+      community.general.homebrew:
+        name:
+          - git
+          - tmux
+          - nvim
+          - lazygit
+          - the_silver_searcher
+          - ripgrep
+          - stow
+          - fzf
+          - asdf
+          - zsh-completions
+          - direnv
+        state: present
+        upgrade_all: false
+      when: ansible_distribution == "MacOSX"
 
   - name: Fetch p10k
     become: no
