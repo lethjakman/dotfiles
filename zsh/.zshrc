@@ -63,3 +63,6 @@ alias k="kubectl"
 
 # source local zshrc settings
 source "$HOME/.zshrc.local"
+
+# setup direnv
+eval "$(direnv hook zsh)"
