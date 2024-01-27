@@ -52,7 +52,7 @@ local plugins = {
     opts = overrides.leap,
     lazy = false,
     config = function()
-      require("leap").create_default_mappings()
+      -- require("leap").create_default_mappings()
     end,
     enabled = true,
   },
