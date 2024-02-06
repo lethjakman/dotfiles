@@ -66,3 +66,9 @@ source "$HOME/.zshrc.local"
 
 # setup direnv
 eval "$(direnv hook zsh)"
+
+# Created by `pipx` on 2024-02-02 05:15:35
+export PATH="$PATH:/Users/lethjakman/.local/bin"
+
+# pipx
+PATH="$PATH:$PIPX_BIN_DIR"
