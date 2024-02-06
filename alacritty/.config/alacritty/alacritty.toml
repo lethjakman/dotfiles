@@ -27,3 +27,4 @@ style = "Italic"
 
 [window]
 option_as_alt = "Both"
+startup_mode = "Maximized"
