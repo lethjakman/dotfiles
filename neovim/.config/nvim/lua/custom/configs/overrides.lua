@@ -40,6 +40,12 @@ M.mason = {
 
     -- rust
     "rust-analyzer",
+
+    -- python
+    "pyright",
+    "flake8",
+    "autopep8",
+    "isort"
   },
 }
 
