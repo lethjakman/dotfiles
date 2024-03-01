@@ -43,9 +43,10 @@ M.mason = {
 
     -- python
     "pyright",
-    "flake8",
-    "autopep8",
-    "isort"
+    "ruff-lsp",
+
+    -- golang
+    "gopls"
   },
 }
 
