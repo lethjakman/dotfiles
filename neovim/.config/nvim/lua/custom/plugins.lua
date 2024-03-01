@@ -32,6 +32,10 @@ local plugins = {
     opts = overrides.mason
   },
 
+  "NvChad/nvcommunity",
+  { import = 'nvcommunity.git.lazygit' },
+  -- { import = 'nvcommunity.lsp.mason-lspconfig' },
+  { import = 'nvcommunity.motion.hop' },
 
   {
     "nvim-treesitter/nvim-treesitter",
