@@ -72,3 +72,14 @@ export PATH="$PATH:/Users/lethjakman/.local/bin"
 
 # pipx
 PATH="$PATH:$PIPX_BIN_DIR"
+
+alias cd=z
+alias ls=exa --icons --colors=always
+alias cat=bat
+alias find=fd
+alias grep=rg
+alias du=dust
+alias sed=sd
+# alias cloc=tokei
+alias ps=procs
+#
