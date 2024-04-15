@@ -48,7 +48,7 @@
       become: no
       ansible.builtin.git:
         depth: 1
-        dest: ~/powerlevel10k
+        dest: ~/.zsh-plugins/powerlevel10k
         repo: https://github.com/romkatv/powerlevel10k.git
 
     # Install fzf 
