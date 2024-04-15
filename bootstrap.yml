@@ -30,7 +30,7 @@
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
  
-    - name: Fetch nvchad
+    - name: Fetch alacritty themes
       become: no
       ansible.builtin.git:
         depth: 1
