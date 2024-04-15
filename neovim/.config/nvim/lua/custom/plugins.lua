@@ -21,8 +21,6 @@ local plugins = {
       require "custom.configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
-
-  -- override plugin configs
   {
     "williamboman/mason.nvim",
     opts = overrides.mason
@@ -33,9 +31,12 @@ local plugins = {
   },
 
   "NvChad/nvcommunity",
-  { import = 'nvcommunity.git.lazygit' },
+  -- { import = 'nvcommunity.git.lazygit' },
   -- { import = 'nvcommunity.lsp.mason-lspconfig' },
   { import = 'nvcommunity.motion.hop' },
+  { import = 'nvcommunity.file-explorer.oil-nvim' },
+
+  -- override plugin configs
 
   {
     "nvim-treesitter/nvim-treesitter",
@@ -92,6 +93,8 @@ local plugins = {
     version = '^3', -- Recommended
     ft = { 'rust' },
   },
+
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
