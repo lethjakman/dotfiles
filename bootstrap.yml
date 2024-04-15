@@ -9,6 +9,7 @@
         name:
           - homebrew/cask-fonts/font-meslo-lg-nerd-font
           - alacritty
+          - wezterm
 
     - name: Install packages with brew
       become: no
@@ -120,6 +121,7 @@
         - tmux
         - zsh
         - alacritty
+        - wezterm
         
 # TODO
 # git clone https://github.com/gpakosz/.tmux.git                                                     
