@@ -85,6 +85,13 @@
         dest: ~/.zsh-plugins/zsh-vi-mode
         repo: https://github.com/jeffreytse/zsh-vi-mode
 
+    - name: fetch ls_colors
+      become: no
+      ansible.builtin.git:
+      depth: 1
+      dest: ~/.zsh-plugins/LS_COLORS
+      repo: https://github.com/trapd00r/LS_COLORS.git
+
     # Oh My tmux
     - name: Setup tmux
       become: no
