@@ -17,7 +17,7 @@ fpath=(~/.zsh-completions/zsh-completions/src $(brew --prefix)/share/zsh/site-fu
 zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
-zstyle :compinstall filename '/Users/lethjakman/.zshrc'
+zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
@@ -70,7 +70,7 @@ source "$HOME/.zshrc.local"
 eval "$(direnv hook zsh)"
 
 # Created by `pipx` on 2024-02-02 05:15:35
-export PATH="$PATH:/Users/lethjakman/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 # pipx
 PATH="$PATH:$PIPX_BIN_DIR"
