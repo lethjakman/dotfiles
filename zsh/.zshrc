@@ -41,9 +41,9 @@ source "$HOME/.zsh-plugins/LS_COLORS/lscolors.sh"
 alias ls="ls --color=auto"
 
 # jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+# export PATH="$HOME/.jenv/bin:$PATH"
+# eval "$(jenv init -)"
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 export PATH="$PATH:$HOME/.config/emacs/bin/"
 
@@ -52,6 +52,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 #
+
+# add vim mason paths
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 # Configuration
 export EDITOR=nvim
@@ -75,13 +78,18 @@ export PATH="$PATH:$HOME/.local/bin"
 # pipx
 PATH="$PATH:$PIPX_BIN_DIR"
 
-alias cd=z
+# mason
+PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+
+#alias cd=z
 alias ls=exa --icons --colors=always
 alias cat=bat
 alias find=fd
-alias grep=rg
-alias du=dust
-alias sed=sd
+#alias grep=rg
+#alias du=dust
+#alias sed=sd
 # alias cloc=tokei
-alias ps=procs
-#
+#alias ps=procs
+
+# Forgit
+[ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh

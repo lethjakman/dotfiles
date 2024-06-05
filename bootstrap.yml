@@ -28,6 +28,9 @@
           - direnv
           - sheldon
           - reattach-to-user-namespace
+          - forgit
+          - watchexec
+          - just
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
