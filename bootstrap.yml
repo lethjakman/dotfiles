@@ -27,6 +27,7 @@
           - zsh-completions
           - direnv
           - sheldon
+          - reattach-to-user-namespace
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
