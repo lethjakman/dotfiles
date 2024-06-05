@@ -1,6 +1,6 @@
 - name: Bootstrap development environment
   hosts: localhost
- 
+
   # ansible-galaxy collection install community.general
   tasks:
     - name: Install packages with brew
@@ -34,7 +34,7 @@
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
- 
+
     - name: Fetch alacritty themes
       become: no
       ansible.builtin.git:
@@ -104,7 +104,7 @@
         depth: 1
         dest: ~/.tmux
         repo: https://github.com/gpakosz/.tmux.git
- 
+
     # Oh My tmux
     - name: Setup alacritty themes
       become: no
