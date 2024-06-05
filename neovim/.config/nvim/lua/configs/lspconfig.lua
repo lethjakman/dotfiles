@@ -4,7 +4,20 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "rust_analyzer", "terraform_lsp", "gopls", "pyright" }
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+local servers = {
+  "html",
+  "cssls",
+  "bashls",
+  "gopls",
+  "pyright",
+  "terraformls",
+  "jsonls",
+  "rust_analyzer",
+  "bashls",
+  "marksman",
+  "ansiblels",
+}
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
