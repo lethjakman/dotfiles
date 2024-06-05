@@ -118,11 +118,7 @@
         state: "link"
         src: ~/.tmux/.tmux.conf
         dest: ~/.tmux.conf
-      
-    # - name: stow dotfiles
-    #   ansible.builtin.shell:
-    #     cmd: "stow -d $HOME/dotfiles -t ~/ {{ item }}"
-    #   loop: "{{ stow }}"
+
     - name: Run stow
       shell: 
         cmd: "stow {{ item }} --target {{ ansible_env.HOME }} --verbose=2"
@@ -134,9 +130,3 @@
         - zsh
         - alacritty
         - wezterm
-        
-# TODO
-# git clone https://github.com/gpakosz/.tmux.git                                                     
-# ln -s -f .tmux/.tmux.conf
-#
-# fzf
