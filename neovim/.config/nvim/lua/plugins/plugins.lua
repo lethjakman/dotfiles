@@ -14,6 +14,13 @@ local plugins = {
 
   -- Install a plugin
   {
+    "stevearc/conform.nvim",
+    event = 'BufWritePre', -- uncomment for format on save
+    config = function()
+      require "configs.conform"
+    end,
+  },
+  {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
     config = function()
