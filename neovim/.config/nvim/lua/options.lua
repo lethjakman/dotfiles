@@ -6,5 +6,6 @@ require "nvchad.options"
 -- o.cursorlineopt ='both' -- to enable cursorline!
 local o = vim.o
 o.cursorlineopt = "both" -- to enable cursorline!
+vim.opt.smartindent = false
 vim.opt.relativenumber = true
 vim.o.statuscolumn = "%s %l %r"
