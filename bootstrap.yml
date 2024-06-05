@@ -26,6 +26,7 @@
           - asdf
           - zsh-completions
           - direnv
+          - sheldon
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"

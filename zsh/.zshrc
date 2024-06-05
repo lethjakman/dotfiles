@@ -14,7 +14,6 @@ source ~/.zsh-plugins/powerlevel10k/powerlevel10k.zsh-theme
 fpath=(~/.zsh-completions/zsh-completions/src $(brew --prefix)/share/zsh/site-functions $fpath ~/.zfunc)
 
 # The following lines were added by compinstall
-
 zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
@@ -25,10 +24,11 @@ compinit
 # End of lines added by compinstall
 
 # Plugins
-source /Users/lethjakman/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh-plugins/zsh-z/zsh-z.plugin.zsh
-source ~/.zsh-plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+eval "$(sheldon source)"
+# source /Users/lethjakman/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source ~/.zsh-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source ~/.zsh-plugins/zsh-z/zsh-z.plugin.zsh
+# source ~/.zsh-plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # asdf
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
