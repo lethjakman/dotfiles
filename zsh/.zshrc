@@ -57,6 +57,8 @@ export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
 
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always {}' --preview-window '~3'"
+
 alias vim="nvim"
 alias e="$EDITOR"
 alias k="kubectl"
