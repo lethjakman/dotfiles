@@ -80,6 +80,23 @@ local plugins = {
       }
     end,
   },
+  {
+    "ThePrimeagen/git-worktree.nvim",
+    config = function()
+      require("git-worktree").setup {
+        -- change_directory_command = <str> -- default: "cd",
+        -- update_on_change = <boolean> -- default: true,
+        -- update_on_change_command = <str> -- default: "e .",
+        -- clearjumps_on_change = <boolean> -- default: true,
+        -- autopush = <boolean> -- default: false,
+      }
+      require("telescope").load_extension "git_worktree"
+    end,
+    keys = {
+      { "<leader>gw", "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Select git worktrees" },
+      { "<leader>gn", "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>","Create new git worktree"},
+    },
+  },
 
   -- To make a plugin not be loaded
   -- {
