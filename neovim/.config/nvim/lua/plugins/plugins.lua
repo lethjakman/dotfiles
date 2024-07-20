@@ -81,20 +81,26 @@ local plugins = {
     end,
   },
   {
-    "ThePrimeagen/git-worktree.nvim",
+    "polarmutex/git-worktree.nvim",
+    version = "^2",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
     config = function()
-      require("git-worktree").setup {
-        -- change_directory_command = <str> -- default: "cd",
-        -- update_on_change = <boolean> -- default: true,
-        -- update_on_change_command = <str> -- default: "e .",
-        -- clearjumps_on_change = <boolean> -- default: true,
-        -- autopush = <boolean> -- default: false,
-      }
       require("telescope").load_extension "git_worktree"
+      local Hooks = require "git-worktree.hooks"
+
+      Hooks.register(Hooks.type.SWITCH, Hooks.builtins.update_current_buffer_on_switch)
     end,
     keys = {
-      { "<leader>gw", "<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "Select git worktrees" },
-      { "<leader>gn", "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>","Create new git worktree"},
+      {
+        "<leader>gw",
+        "<CMD>lua require('telescope').extensions.git_worktree.git_worktree()<cr>",
+        "Select git worktrees",
+      },
+      {
+        "<leader>gn",
+        "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
+        "Create new git worktree",
+      },
     },
   },
 
