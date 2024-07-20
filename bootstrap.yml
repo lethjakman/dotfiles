@@ -31,6 +31,12 @@
           - forgit
           - watchexec
           - just
+          - yazi
+          - ffmpegthumbnailer unar
+          - jq poppler
+          - fd ripgrep
+          - fzf zoxide
+          - font-symbols-only-nerd-font
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
