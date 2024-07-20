@@ -7,15 +7,15 @@ local plugins = {
   "NvChad/nvcommunity",
   -- { import = 'nvcommunity.git.lazygit' },
   -- { import = 'nvcommunity.lsp.mason-lspconfig' },
-  { import = 'nvcommunity.motion.hop' },
-  { import = 'nvcommunity.file-explorer.oil-nvim' },
+  { import = "nvcommunity.motion.hop" },
+  { import = "nvcommunity.file-explorer.oil-nvim" },
 
   -- override plugin configs
 
   -- Install a plugin
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
@@ -38,15 +38,15 @@ local plugins = {
     enabled = true,
   },
 
- {
+  {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup({
+      require("nvim-surround").setup {
         -- Configuration here, or leave empty to use defaults
-      })
-    end
+      }
+    end,
   },
   {
     "kdheepak/lazygit.nvim",
@@ -60,25 +60,25 @@ local plugins = {
     },
   },
   {
-    'mrcjkb/rustaceanvim',
-    version = '^3', -- Recommended
-    ft = { 'rust' },
+    "mrcjkb/rustaceanvim",
+    version = "^3", -- Recommended
+    ft = { "rust" },
   },
   {
-      "vhyrro/luarocks.nvim",
-      priority = 1000, -- We'd like this plugin to load first out of the rest
-      config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- We'd like this plugin to load first out of the rest
+    config = true, -- This automatically runs `require("luarocks-nvim").setup()`
   },
   {
-      "nvim-neorg/neorg",
-      dependencies = { "luarocks.nvim" },
-      ft = { 'org' }, 
-      -- put any other flags you wanted to pass to lazy here!
-      config = function()
-          require("neorg").setup({
-              -- put any of your previous config here
-          })
-      end,
+    "nvim-neorg/neorg",
+    dependencies = { "luarocks.nvim" },
+    ft = { "norg" },
+    -- put any other flags you wanted to pass to lazy here!
+    config = function()
+      require("neorg").setup {
+        -- put any of your previous config here
+      }
+    end,
   },
 
   -- To make a plugin not be loaded
@@ -97,5 +97,3 @@ local plugins = {
 }
 
 return plugins
-
-
