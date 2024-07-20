@@ -8,9 +8,9 @@ return {
   },
 
   {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
         -- lua stuff
         "lua-language-server",
         "stylua",
@@ -34,30 +34,70 @@ return {
         "ruff-lsp",
 
         -- golang
-        "gopls"
-  		},
-  	},
+        "gopls",
+      },
+    },
   },
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
         -- Editor
-        "vim", "lua", "vimdoc",
-				-- Config
-        "markdown", "markdown_inline", "yaml",
+        "vim",
+        "lua",
+        "vimdoc",
+
+        -- Config
+        "markdown",
+        "markdown_inline",
+        "yaml",
+
         -- rust
         "rust",
+
         -- python
         "python",
+
         -- go
-        "go", "gomod", "gosum",
+        "go",
+        "gomod",
+        "gosum",
+
+        -- haskell
+        "haskell",
+
+        -- ruby
+        "ruby",
+
         -- web
-        "http", "javascript", "typescript",
-        "html", "css", "json",
-				-- General
-				"tsx", "c",
-  		},
-  	},
+        "http",
+        "javascript",
+        "typescript",
+        "html",
+        "css",
+        "json",
+        --
+        -- General
+        "tsx",
+        "c",
+
+        -- Git
+        "git_config",
+        "git_rebase",
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+
+        -- build
+        "make",
+        "just",
+
+        -- norg mode
+        "norg",
+
+        -- sql
+        "sql",
+      },
+    },
   },
 }
