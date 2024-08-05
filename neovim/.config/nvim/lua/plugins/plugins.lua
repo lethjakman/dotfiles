@@ -9,6 +9,8 @@ local plugins = {
   -- { import = 'nvcommunity.lsp.mason-lspconfig' },
   { import = "nvcommunity.motion.hop" },
   { import = "nvcommunity.file-explorer.oil-nvim" },
+  { import = "nvcommunity.lsp.prettyhover" },
+  { import = "nvcommunity.lsp.lspsaga" },
 
   -- override plugin configs
 
