@@ -33,8 +33,10 @@ return {
         "pyright",
         "ruff-lsp",
 
-        -- golang
         "gopls",
+
+        -- terraform
+        "terraform-ls",
       },
     },
   },
