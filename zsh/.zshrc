@@ -81,7 +81,7 @@ PATH="$PATH:$PIPX_BIN_DIR"
 # mason
 PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
-#alias cd=z
+alias cd=z
 alias ls=exa --icons --colors=always
 alias cat=bat
 alias find=fd
