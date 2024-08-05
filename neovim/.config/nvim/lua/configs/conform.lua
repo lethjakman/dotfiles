@@ -5,7 +5,7 @@ local options = {
     -- html = { "prettier" },
     python = { "isort", "black" },
     terraform = { "terraform_fmt" },
-    go = { "gmft", "goimports" },
+    go = { "gofmt", "goimports" },
   },
 
   format_on_save = {
