@@ -10,6 +10,7 @@ local servers = {
   "cssls",
   "bashls",
   "gopls",
+  "golangci_lint_ls",
   "basedpyright",
   -- "pyright",
   "terraformls",

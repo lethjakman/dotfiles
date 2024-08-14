@@ -32,8 +32,11 @@ return {
         -- python
         "pyright",
         "ruff-lsp",
+        "ruff",
 
         "gopls",
+        "golangci-lint",
+        "golangci-lint-langserver",
 
         -- terraform
         "terraform-ls",
