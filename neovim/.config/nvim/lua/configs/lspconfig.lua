@@ -15,6 +15,7 @@ local servers = {
   "terraformls",
   "tflint",
   "jsonls",
+  "ruff",
   "rust_analyzer",
   "bashls",
   "marksman",
