@@ -81,8 +81,10 @@ PATH="$PATH:$PIPX_BIN_DIR"
 # mason
 PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
-alias cd=z
+eval "$(zoxide init zsh --cmd cd)"
+
 alias ls=exa --icons --colors=always
+alias ll=ls -l
 alias cat=bat
 alias find=fd
 #alias grep=rg
@@ -90,6 +92,7 @@ alias find=fd
 #alias sed=sd
 # alias cloc=tokei
 #alias ps=procs
+
 
 # Forgit
 [ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
