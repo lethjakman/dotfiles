@@ -20,8 +20,8 @@ git = "https://github.com/zsh-users/zsh-syntax-highlighting"
 [plugins.zsh-autosuggestions]
 git = "https://github.com/zsh-users/zsh-autosuggestions"
 
-[plugins.zsh-z]
-git = "https://github.com/agkozak/zsh-z"
+# [plugins.zsh-z]
+# git = "https://github.com/agkozak/zsh-z"
 
 [plugins.zsh-vi-mode]
 git = "https://github.com/jeffreytse/zsh-vi-mode"
