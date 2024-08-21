@@ -83,8 +83,11 @@ PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 eval "$(zoxide init zsh --cmd cd)"
 
-alias ls=exa --icons --colors=always
-alias ll=ls -l
+alias ls="exa --icons --color=always --group-directories-first"
+alias l='ls -lah' # with headers
+alias la='ls -al'  # all files and dirs
+alias ll='ls -l'  # long format
+alias lt='ls -aT'
 alias cat=bat
 alias find=fd
 #alias grep=rg
