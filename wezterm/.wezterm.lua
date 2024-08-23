@@ -5,8 +5,8 @@ local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
-config.font = wezterm.font "Terminess Nerd Font Mono"
--- config.font = wezterm.font "FiraCode Nerd Font"
+-- config.font = wezterm.font "Terminess Nerd Font Mono"
+config.font = wezterm.font("FiraCode Nerd Font")
 -- config.font = wezterm.font "MesloLGM Nerd Font Mono"
 config.color_scheme = "Night Owl (Gogh)"
 

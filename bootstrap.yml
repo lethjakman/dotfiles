@@ -10,6 +10,7 @@
           - homebrew/cask-fonts/font-meslo-lg-nerd-font
           - alacritty
           - wezterm
+          - font-fira-code-nerd-font
 
     - name: Install packages with brew
       become: no
