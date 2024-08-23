@@ -16,40 +16,54 @@
       become: no
       community.general.homebrew:
         name:
-          - git
-          - tmux
+          # neovim
           - nvim
-          - lazygit
-          - the_silver_searcher
-          - ripgrep
-          - stow
-          - fzf
+          # Programming Languages
           - asdf
-          - zsh-completions
-          - direnv
-          - sheldon
+          # git 
+          - git
+          - lazygit
+          # tmux
+          - tmux
           - reattach-to-user-namespace
           - forgit
-          - watchexec
-          - just
+          # yazi dependencies
           - yazi
-          - ffmpegthumbnailer
-          - unar
-          - jq
-          - poppler
+          - ffmpegthumbnailer # ffmpeg thumbnails for yazi
+          - poppler # pdf rendering library
+          # zsh
+          - zsh-completions
+          # Docker dependencies
+          - colima
+          - docker
+          - kubectl 
+          - k9s
+          # Command Line Utilities
           - fd
           - ripgrep
           - fzf
           - zoxide
           - rclone
+          - unar
+          - jq
+          - watchexec
+          - just
+          - direnv
+          - sheldon
+          - stow
+          - fzf
+          - ripgrep
+          - the_silver_searcher
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
  
+    # TODO: better changed_when
     # Install fzf 
     - name: install fzf
       shell: 
-        cmd: "$(brew --prefix)/opt/fzf/install"
+        cmd: "$(brew --prefix)/opt/fzf/install --all"
+      changed_when: False
 
     # Oh My tmux
     - name: Setup tmux
