@@ -26,6 +26,9 @@ git = "https://github.com/zsh-users/zsh-autosuggestions"
 [plugins.zsh-vi-mode]
 git = "https://github.com/jeffreytse/zsh-vi-mode"
 
+[plugins.powerlevel10k]
+github = "romkatv/powerlevel10k"
+
 # For example:
 #
 # [plugins.base16]

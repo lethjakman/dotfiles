@@ -8,7 +8,6 @@
       community.general.homebrew_cask:
         name:
           - font-meslo-lg-nerd-font
-          - alacritty
           - wezterm
           - font-fira-code-nerd-font
           - font-symbols-only-nerd-font
@@ -46,68 +45,11 @@
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
-
-    - name: Fetch alacritty themes
-      become: no
-      ansible.builtin.git:
-        depth: 1
-        dest: ~/.config/alacritty/themes
-        repo: https://github.com/alacritty/alacritty-theme
-
-    # - name: Fetch nvchad
-    #   become: no
-    #   ansible.builtin.git:
-    #     depth: 1
-    #     dest: ~/.config/nvim
-    #     repo: https://github.com/NvChad/NvChad
-
-    - name: Fetch p10k
-      become: no
-      ansible.builtin.git:
-        depth: 1
-        dest: ~/.zsh-plugins/powerlevel10k
-        repo: https://github.com/romkatv/powerlevel10k.git
-
+ 
     # Install fzf 
     - name: install fzf
       shell: 
         cmd: "$(brew --prefix)/opt/fzf/install"
-
-    # Zsh Plugins
-    # - name: fetch zsh-syntax-highlighting
-    #   become: no
-    #   ansible.builtin.git:
-    #     depth: 1
-    #     dest: ~/.zsh-plugins/zsh-syntax-highlighting
-    #     repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
-    #
-    # - name: fetch zsh-autosuggestions 
-    #   become: no
-    #   ansible.builtin.git:
-    #     depth: 1
-    #     dest: ~/.zsh-plugins/zsh-autosuggestions
-    #     repo: https://github.com/zsh-users/zsh-autosuggestions
-    #
-    # - name: fetch zsh-z
-    #   become: no
-    #   ansible.builtin.git:
-    #     depth: 1
-    #     dest: ~/.zsh-plugins/zsh-z
-    #     repo: https://github.com/agkozak/zsh-z.git
-    #
-    # - name: fetch zsh-vi-mode
-    #   become: no
-    #   ansible.builtin.git:
-    #     depth: 1
-    #     dest: ~/.zsh-plugins/zsh-vi-mode
-    #     repo: https://github.com/jeffreytse/zsh-vi-mode
-    #
-    # - name: fetch ls_colors
-    #   become: no
-    #   ansible.builtin.git:
-    #   depth: 1
-    #   dest: ~/.zsh-plugins/LS_COLORS
-    #   repo: https://github.com/trapd00r/LS_COLORS.git
 
     # Oh My tmux
     - name: Setup tmux
@@ -116,14 +58,6 @@
         depth: 1
         dest: ~/.tmux
         repo: https://github.com/gpakosz/.tmux.git
-
-    # Oh My tmux
-    - name: Setup alacritty themes
-      become: no
-      ansible.builtin.git:
-        depth: 1
-        dest: ~/.config/alacritty/themes
-        repo: https://github.com/alacritty/alacritty-theme 
 
     - name: Symlink tmux
       ansible.builtin.file:
@@ -140,5 +74,4 @@
         - neovim
         - tmux
         - zsh
-        - alacritty
         - wezterm
