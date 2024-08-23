@@ -1,7 +1,6 @@
 - name: Bootstrap development environment
   hosts: localhost
 
-  # ansible-galaxy collection install community.general
   tasks:
     - name: Install cask packages with brew
       become: no
