@@ -6,9 +6,9 @@
       become: no
       community.general.homebrew_cask:
         name:
-          - font-meslo-lg-nerd-font
           - wezterm
           - font-fira-code-nerd-font
+          - font-meslo-lg-nerd-font
           - font-symbols-only-nerd-font
 
 
@@ -54,6 +54,8 @@
           - fzf
           - ripgrep
           - the_silver_searcher
+          - pv
+          - gum
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
