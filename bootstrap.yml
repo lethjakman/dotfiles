@@ -23,10 +23,11 @@
           # git 
           - git
           - lazygit
+          - forgit
           # tmux
           - tmux
           - reattach-to-user-namespace
-          - forgit
+          - sesh
           # yazi dependencies
           - yazi
           - ffmpegthumbnailer # ffmpeg thumbnails for yazi
