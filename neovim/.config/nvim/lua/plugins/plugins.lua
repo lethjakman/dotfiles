@@ -105,6 +105,35 @@ local plugins = {
       },
     },
   },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+  {
+    "nvim-neotest/neotest",
+    ft = { "go", "python" },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-python" {
+            dap = { justMyCode = false },
+          },
+          require "neotest-golang",
+          require "neotest-plenary",
+          require "neotest-vim-test" {
+            ignore_file_types = { "python", "vim", "lua" },
+          },
+        },
+      }
+    end,
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "nvim-neotest/neotest-plenary",
+      "nvim-neotest/neotest-python",
+      "fredrikaverpil/neotest-golang",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-vim-test",
+    },
+  },
 
   -- To make a plugin not be loaded
   -- {
