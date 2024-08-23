@@ -75,6 +75,9 @@ eval "$(direnv hook zsh)"
 # Created by `pipx` on 2024-02-02 05:15:35
 export PATH="$PATH:$HOME/.local/bin"
 
+# My scripts
+export PATH="$PATH:$HOME/bin"
+
 # pipx
 PATH="$PATH:$PIPX_BIN_DIR"
 
