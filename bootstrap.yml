@@ -32,8 +32,6 @@
           - yazi
           - ffmpegthumbnailer # ffmpeg thumbnails for yazi
           - poppler # pdf rendering library
-          # zsh
-          - zsh-completions
           # Docker dependencies
           - colima
           - docker
