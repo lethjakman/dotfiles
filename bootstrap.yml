@@ -27,7 +27,7 @@
           # tmux
           - tmux
           - reattach-to-user-namespace
-          - sesh
+          - joshmedeski/sesh/sesh
           # yazi dependencies
           - yazi
           - ffmpegthumbnailer # ffmpeg thumbnails for yazi
