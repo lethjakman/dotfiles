@@ -93,6 +93,7 @@ alias ll='ls -l'  # long format
 alias lt='ls -aT'
 alias cat=bat
 alias find=fd
+alias k=kubectl
 #alias grep=rg
 #alias du=dust
 #alias sed=sd

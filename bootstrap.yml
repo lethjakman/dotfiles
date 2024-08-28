@@ -38,6 +38,7 @@
           - colima
           - docker
           - kubectl 
+          - kubectx
           - k9s
           # Command Line Utilities
           - fd
