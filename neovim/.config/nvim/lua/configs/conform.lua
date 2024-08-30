@@ -6,6 +6,7 @@ local options = {
     python = { "ruff_format" },
     terraform = { "terraform_fmt" },
     go = { "gofmt", "goimports" },
+    markdown = { "prettier" },
   },
 
   format_on_save = {
