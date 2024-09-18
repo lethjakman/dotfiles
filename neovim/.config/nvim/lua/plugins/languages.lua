@@ -40,6 +40,10 @@ return {
 
         -- terraform
         "terraform-ls",
+
+        -- config
+        "yaml-language-server",
+        "json-lsp",
       },
     },
   },

@@ -21,6 +21,7 @@ local servers = {
   "bashls",
   "marksman",
   "ansiblels",
+  "yamlls",
 }
 
 -- lsps with default config
@@ -31,10 +32,3 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
--- typescript
-lspconfig.tsls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
