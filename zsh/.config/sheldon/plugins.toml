@@ -33,6 +33,9 @@ github = "romkatv/powerlevel10k"
 github = "zsh-users/zsh-completions"
 fpath = 'fpath=( "{{ dir }}/src" $fpath )'
 
+# [plugins.fzf-tab-completion]
+# github = "lincheney/fzf-tab-completion"
+
 # For example:
 #
 # [plugins.base16]
