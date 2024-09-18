@@ -38,6 +38,7 @@
           - kubectl 
           - kubectx
           - k9s
+          - kubecolor
           # Command Line Utilities
           - fd
           - ripgrep
