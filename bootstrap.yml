@@ -57,6 +57,7 @@
           - pv
           - gum
           - hyperfine
+          - parallel
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
