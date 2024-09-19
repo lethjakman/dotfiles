@@ -24,7 +24,7 @@
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
   "neorg": { "branch": "main", "commit": "ba35900b21921c439e676b063a79c8fad914eac9" },
   "neotest": { "branch": "master", "commit": "6d6ad113f56edc7c3f2a77a0836ea8c1b955ebea" },
-  "neotest-golang": { "branch": "main", "commit": "2d6b5c777e43caa981cc3fa302e5cacba4538dfc" },
+  "neotest-golang": { "branch": "main", "commit": "cb12409f4e69d77713eae4843a9ebb7b6ae1edff" },
   "neotest-plenary": { "branch": "master", "commit": "3523adcf9ffaad1911960c5813b0136c1b63a2ec" },
   "neotest-python": { "branch": "master", "commit": "72603dfdbaad5695160268cb10531a14cc37236e" },
   "neotest-vim-test": { "branch": "master", "commit": "75c4228882ae4883b11bfce9b8383e637eb44192" },
@@ -49,5 +49,5 @@
   "telescope.nvim": { "branch": "master", "commit": "0df05c9e9f791dbc542c1fb612195f4dc97209b6" },
   "trouble.nvim": { "branch": "main", "commit": "6efc446226679fda0547c0fd6a7892fd5f5b15d8" },
   "ui": { "branch": "v2.5", "commit": "dbdd2cfa7b6267e007e0b87ed7e2ea5c6979ef22" },
-  "which-key.nvim": { "branch": "main", "commit": "bfec3d6bc0a9b0b2cb11644642f78c2c3915eef0" }
+  "which-key.nvim": { "branch": "main", "commit": "fb070344402cfc662299d9914f5546d840a22126" }
 }
