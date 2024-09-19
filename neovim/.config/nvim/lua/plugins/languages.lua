@@ -10,41 +10,41 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
-      ensure_installed = {
-        -- lua stuff
-        "lua-language-server",
-        "stylua",
-
-        -- web dev stuff
-        "css-lsp",
-        "html-lsp",
-        "typescript-language-server",
-        "deno",
-        "prettier",
-
-        -- c/cpp stuff
-        "clangd",
-        "clang-format",
-
-        -- rust
-        "rust-analyzer",
-
-        -- python
-        "pyright",
-        "ruff-lsp",
-        "ruff",
-
-        "gopls",
-        "golangci-lint",
-        "golangci-lint-langserver",
-
-        -- terraform
-        "terraform-ls",
-
-        -- config
-        "yaml-language-server",
-        "json-lsp",
-      },
+      -- ensure_installed = {
+      --   -- lua stuff
+      --   "lua-language-server",
+      --   "stylua",
+      --
+      --   -- web dev stuff
+      --   "css-lsp",
+      --   "html-lsp",
+      --   "typescript-language-server",
+      --   "deno",
+      --   "prettier",
+      --
+      --   -- c/cpp stuff
+      --   "clangd",
+      --   "clang-format",
+      --
+      --   -- rust
+      --   "rust-analyzer",
+      --
+      --   -- python
+      --   "pyright",
+      --   "ruff-lsp",
+      --   "ruff",
+      --
+      --   "gopls",
+      --   "golangci-lint",
+      --   "golangci-lint-langserver",
+      --
+      --   -- terraform
+      --   "terraform-ls",
+      --
+      --   -- config
+      --   "yaml-language-server",
+      --   "json-lsp",
+      -- },
     },
   },
   {
