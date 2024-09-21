@@ -10,7 +10,7 @@
           - font-fira-code-nerd-font
           - font-meslo-lg-nerd-font
           - font-symbols-only-nerd-font
-
+      when: ansible_distribution == "MacOSX"
 
     - name: Install regular packages with brew
       become: no
@@ -62,6 +62,107 @@
         state: present
         upgrade_all: false
       when: ansible_distribution == "MacOSX"
+
+    - name: Install kubernetes
+      become: yes
+      command: curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      args: 
+        creates: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+    - name: Change file ownership, group and permissions
+      become: yes
+      ansible.builtin.file:
+        path: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+        mode: '0644'
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+    - name: add kubernetes repo
+      become: yes
+      ansible.builtin.apt_repository:
+        repo: deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.31/deb/ /
+        state: present
+        filename: kubernetes
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+    #- name: add debian repo
+    #  become: yes
+    #  ansible.builtin.apt_repository:
+    #    repo: deb [trusted=yes] http://ftp.de.debian.org/debian buster main
+    #    state: present
+    #    filename: debian
+    #  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+    - name: Install packages with apt
+      become: yes
+      ansible.builtin.apt:
+        # update_cache: true
+        pkg:
+          # neovim
+          - neovim
+          # git 
+          - git
+          # tmux
+          - tmux
+          ## Docker dependencies
+          - docker
+          - kubectl 
+          - kubectx
+          - kubecolor
+          ## Command Line Utilities
+          - curl
+          - fd-find
+          - ripgrep
+          - fzf
+          - zoxide
+          - rclone
+          # Causes a problem when installing for some reason
+          #- unar
+          - jq
+          - direnv
+          - stow
+          - ripgrep
+          - silversearcher-ag
+          - pv
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+      #- name: Install packages with snap
+      #  community.general.snap:
+      #    name:
+      #      - k9s
+
+    # --- Install Rust ---
+    - name: check if cargo is installed
+      shell: command -v cargo
+      register: cargo_exists
+      ignore_errors: yes
+
+    - name: Download Installer
+      when: cargo_exists is failed
+      get_url:
+        url: https://sh.rustup.rs
+        dest: /tmp/sh.rustup.rs
+        mode: '0755'
+        force: 'yes'
+        tags:
+          - rust
+
+    - name: install rust/cargo
+      when: cargo_exists is failed
+      shell: /tmp/sh.rustup.rs -y
+      tags:
+        - rust
+
+    - name: install rust packages
+      community.general.cargo:
+        name:
+          - clap
+          - watchexec-cli
+          - sheldon
+          - exa
+          - zoxide
+      tags:
+        - rust
  
     # TODO: better changed_when
     # Install fzf 
@@ -69,6 +170,7 @@
       shell: 
         cmd: "$(brew --prefix)/opt/fzf/install --all"
       changed_when: False
+      when: ansible_distribution == "MacOSX"
 
     # Oh My tmux
     - name: Setup tmux
@@ -77,6 +179,15 @@
         depth: 1
         dest: ~/.tmux
         repo: https://github.com/gpakosz/.tmux.git
+ 
+    # setup asdf
+    - name: Setup asdf
+      become: no
+      ansible.builtin.git:
+        depth: 1
+        dest: ~/.asdf
+        repo: https://github.com/asdf-vm/asdf.git
+        version: v0.14.1
 
     - name: Symlink tmux
       ansible.builtin.file:

@@ -5,13 +5,18 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/.zsh-plugins/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/.zsh-plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # completions
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath ~/.zfunc)
+fpath=($fpath ~/.zfunc)
+# If osx
+if command -v brew 2>&1 >/dev/null
+then
+  fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+fi
 
 # The following lines were added by compinstall
 zstyle ':completion:*' menu select
@@ -35,10 +40,6 @@ eval "$(sheldon source)"
 
 # doom
 PATH=$PATH:~/.emacs.d/bin
-
-# lscolors
-source "$HOME/.zsh-plugins/LS_COLORS/lscolors.sh"
-alias ls="ls --color=auto"
 
 # jenv
 # export PATH="$HOME/.jenv/bin:$PATH"
