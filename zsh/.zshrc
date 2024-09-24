@@ -25,6 +25,9 @@ zstyle :compinstall filename '$HOME/.zshrc'
 
 autoload -Uz compinit
 compinit
+
+# Save history
+setopt incappendhistory
 # End of lines added by compinstall
 
 # Plugins
