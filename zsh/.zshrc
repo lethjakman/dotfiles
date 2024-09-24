@@ -5,7 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# source ~/.zsh-plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -40,28 +39,22 @@ eval "$(sheldon source)"
 
 # doom
 PATH=$PATH:~/.emacs.d/bin
-
-# jenv
-# export PATH="$HOME/.jenv/bin:$PATH"
-# eval "$(jenv init -)"
-# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
 export PATH="$PATH:$HOME/.config/emacs/bin/"
 
 # Node nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 # [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-#
 
 # add vim mason paths
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
-# Configuration
-export EDITOR=nvim
 
 zvm_after_init_commands+=('[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh')
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always {}' --preview-window '~3'"
+
+# Configuration
+export EDITOR=nvim
 
 alias vim="nvim"
 alias e="$EDITOR"
