@@ -12,7 +12,6 @@ local servers = {
   "gopls",
   "golangci_lint_ls",
   "basedpyright",
-  -- "pyright",
   "terraformls",
   "tflint",
   "jsonls",
@@ -34,9 +33,30 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- configuring single server, example: typescript
--- lspconfig.ts_ls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
+lspconfig.textlsp.setup {
+  filetypes = { "tex", "text", "markdown", "typst", "org" },
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    textLSP = {
+      analysers = {
+        languagetool = {
+          enabled = false,
+          check_text = { on_open = true, on_save = true, on_change = false },
+        },
+        ollama = {
+          enabled = true,
+          check_text = {
+            on_open = true,
+            on_save = true,
+            on_change = false,
+          },
+          model = "phi3:3.8b-instruct", -- smaller but faster model
+          -- model = "phi3:14b-instruct",  -- more accurate
+          max_token = 50,
+        },
+      },
+    },
+  },
+}
