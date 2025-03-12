@@ -97,12 +97,12 @@ local plugins = {
       {
         "<leader>gw",
         "<CMD>lua require('telescope').extensions.git_worktree.git_worktree()<cr>",
-        "Select git worktrees",
+        desc = "Select git worktrees",
       },
       {
         "<leader>gn",
         "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
-        "Create new git worktree",
+        desc = "Create new git worktree",
       },
     },
   },
