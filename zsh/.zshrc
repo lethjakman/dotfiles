@@ -30,6 +30,12 @@ compinit
 setopt incappendhistory
 # End of lines added by compinstall
 
+# Enable vim editing of commands
+# m-v v or m-x m-v
+# can use fc to edit last command
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Plugins
 eval "$(sheldon source)"
 # source /Users/lethjakman/.zsh-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
