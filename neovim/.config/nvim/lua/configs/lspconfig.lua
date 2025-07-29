@@ -1,10 +1,5 @@
--- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
-local lspconfig = require "lspconfig"
-
--- EXAMPLE
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local servers = {
   "html",
   "cssls",
@@ -21,42 +16,44 @@ local servers = {
   "marksman",
   "ansiblels",
   "yamlls",
+  "sqlls",
+  "vtsls",
 }
-local nvlsp = require "nvchad.configs.lspconfig"
+vim.lsp.enable(servers)
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
-end
-
-lspconfig.textlsp.setup {
-  filetypes = { "tex", "text", "markdown", "typst", "org" },
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-  settings = {
-    textLSP = {
-      analysers = {
-        languagetool = {
-          enabled = false,
-          check_text = { on_open = true, on_save = true, on_change = false },
-        },
-        ollama = {
-          enabled = true,
-          check_text = {
-            on_open = true,
-            on_save = true,
-            on_change = false,
-          },
-          model = "phi3:3.8b-instruct", -- smaller but faster model
-          -- model = "phi3:14b-instruct",  -- more accurate
-          max_token = 50,
-        },
-      },
-    },
-  },
-}
+-- read :h vim.lsp.config for changing options of lsp servers
+-- for _, lsp in ipairs(servers) do
+--   lspconfig[lsp].setup {
+--     on_attach = nvlsp.on_attach,
+--     on_init = nvlsp.on_init,
+--     capabilities = nvlsp.capabilities,
+--   }
+-- end
+--
+-- lspconfig.textlsp.setup {
+--   filetypes = { "tex", "text", "markdown", "typst", "org" },
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   settings = {
+--     textLSP = {
+--       analysers = {
+--         languagetool = {
+--           enabled = false,
+--           check_text = { on_open = true, on_save = true, on_change = false },
+--         },
+--         ollama = {
+--           enabled = true,
+--           check_text = {
+--             on_open = true,
+--             on_save = true,
+--             on_change = false,
+--           },
+--           model = "phi3:3.8b-instruct", -- smaller but faster model
+--           -- model = "phi3:14b-instruct",  -- more accurate
+--           max_token = 50,
+--         },
+--       },
+--     },
+--   },
+-- }

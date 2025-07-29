@@ -13,114 +13,256 @@ return {
     end,
   },
 
-  -- Do I need this anymore?
+  -- test new blink
+  -- { import = "nvchad.blink.lazyspec" },
+
   -- {
-  --   "williamboman/mason.nvim",
-  --   opts = {
-  --     -- ensure_installed = {
-  --     --   -- lua stuff
-  --     --   "lua-language-server",
-  --     --   "stylua",
-  --     --
-  --     --   -- web dev stuff
-  --     --   "css-lsp",
-  --     --   "html-lsp",
-  --     --   "typescript-language-server",
-  --     --   "deno",
-  --     --   "prettier",
-  --     --
-  --     --   -- c/cpp stuff
-  --     --   "clangd",
-  --     --   "clang-format",
-  --     --
-  --     --   -- rust
-  --     --   "rust-analyzer",
-  --     --
-  --     --   -- python
-  --     --   "pyright",
-  --     --   "ruff-lsp",
-  --     --   "ruff",
-  --     --
-  --     --   "gopls",
-  --     --   "golangci-lint",
-  --     --   "golangci-lint-langserver",
-  --     --
-  --     --   -- terraform
-  --     --   "terraform-ls",
-  --     --
-  --     --   -- config
-  --     --   "yaml-language-server",
-  --     --   "json-lsp",
-  --     -- },
-  --   },
+  -- 	"nvim-treesitter/nvim-treesitter",
+  -- 	opts = {
+  -- 		ensure_installed = {
+  -- 			"vim", "lua", "vimdoc",
+  --      "html", "css"
+  -- 		},
+  -- 	},
+  -- },
+  -- { import = "nvcommunity.motion.hop" },
+  -- { import = "nvcommunity.file-explorer.oil-nvim" },
+  -- { import = "nvcommunity.lsp.prettyhover" },
+  -- { import = "nvcommunity.lsp.lspsaga" },
+
+  -- override plugin configs
+
+  -- Install a plugin
+  -- {
+  --   "stevearc/conform.nvim",
+  --   event = "BufWritePre", -- uncomment for format on save
+  --   lazy = false,
+  --   config = function()
+  --     require "configs.conform"
+  --   end,
+  -- },
+  -- {
+  --   "max397574/better-escape.nvim",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("better_escape").setup()
+  --   end,
   -- },
 
   {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        -- Editor
-        "vim",
-        "lua",
-        "vimdoc",
+    "ggandor/leap.nvim",
+    -- opts = overrides.leap,
+    lazy = false,
+    config = function()
+      -- require("leap").create_default_mappings()
+    end,
+    enabled = true,
+  },
 
-        -- Config
-        "markdown",
-        "markdown_inline",
-        "yaml",
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    enabled = true,
+    keys = {
+      { "<leader>gg", "<cmd>:LazyGit<cr>", desc = "LazyGit" },
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^3", -- Recommended
+    ft = { "rust" },
+  },
+  {
+    "vhyrro/luarocks.nvim",
+    priority = 1000, -- We'd like this plugin to load first out of the rest
+    config = true, -- This automatically runs `require("luarocks-nvim").setup()`
+  },
+  {
+    "nvim-neorg/neorg",
+    dependencies = { "luarocks.nvim" },
+    ft = { "norg" },
+    -- put any other flags you wanted to pass to lazy here!
+    config = function()
+      require("neorg").setup {
+        -- put any of your previous config here
+      }
+    end,
+  },
+  {
+    "polarmutex/git-worktree.nvim",
+    version = "^2",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("telescope").load_extension "git_worktree"
+      local Hooks = require "git-worktree.hooks"
 
-        -- rust
-        "rust",
-
-        -- python
-        "python",
-
-        -- go
-        "go",
-        "gomod",
-        "gosum",
-
-        -- haskell
-        "haskell",
-
-        -- ruby
-        "ruby",
-
-        -- web
-        "http",
-        "javascript",
-        "typescript",
-        "html",
-        "css",
-        "json",
-        --
-        -- General
-        "tsx",
-        "c",
-
-        -- Git
-        "git_config",
-        "git_rebase",
-        "gitattributes",
-        "gitcommit",
-        "gitignore",
-
-        -- build
-        "make",
-        "just",
-
-        -- norg mode
-        "norg",
-
-        -- sql
-        "sql",
-
-        -- infra
-        "terraform",
+      Hooks.register(Hooks.type.SWITCH, Hooks.builtins.update_current_buffer_on_switch)
+    end,
+    keys = {
+      {
+        "<leader>gw",
+        "<CMD>lua require('telescope').extensions.git_worktree.git_worktree()<cr>",
+        desc = "Select git worktrees",
       },
+      {
+        "<leader>gn",
+        "<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>",
+        desc = "Create new git worktree",
+      },
+    },
+  },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+  {
+    "nvim-neotest/neotest",
+    ft = { "go", "python" },
+    config = function()
+      require("neotest").setup {
+        adapters = {
+          require "neotest-python" {
+            dap = { justMyCode = false },
+          },
+          require "neotest-golang",
+          require "neotest-plenary",
+          require "neotest-vim-test" {
+            ignore_file_types = { "python", "vim", "lua" },
+          },
+        },
+      }
+    end,
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "nvim-neotest/neotest-plenary",
+      "nvim-neotest/neotest-python",
+      "fredrikaverpil/neotest-golang",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-vim-test",
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    lazy = false,
+    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>tx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>tX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>tL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>tQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
+  -- To make a plugin not be loaded
+  -- {
+  --   "NvChad/nvim-colorizer.lua",
+  --   enabled = false
+  -- },
 
-      sync_install = true,
-      auto_install = true,
+  -- All NvChad plugins are lazy-loaded by default
+  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
+  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
+  -- {
+  --   "mg979/vim-visual-multi",
+  --   lazy = false,
+  -- }
+
+  {
+    "allaman/emoji.nvim",
+    version = "1.0.0", -- optionally pin to a tag
+    ft = { "norg", "markdown" }, -- adjust to your needs
+    dependencies = {
+      -- util for handling paths
+      "nvim-lua/plenary.nvim",
+      -- optional for nvim-cmp integration
+      "hrsh7th/nvim-cmp",
+      -- optional for telescope integration
+      "nvim-telescope/telescope.nvim",
+      -- optional for fzf-lua integration via vim.ui.select
+      "ibhagwan/fzf-lua",
+    },
+    opts = {
+      -- default is false, also needed for blink.cmp integration!
+      enable_cmp_integration = true,
+      -- optional if your plugin installation directory
+      -- is not vim.fn.stdpath("data") .. "/lazy/
+      -- plugin_path = vim.fn.expand "$HOME/plugins/",
+    },
+    config = function(_, opts)
+      require("emoji").setup(opts)
+      -- optional for telescope integration
+      local ts = require("telescope").load_extension "emoji"
+      vim.keymap.set("n", "<leader>se", ts.emoji, { desc = "[S]earch [E]moji" })
+    end,
+  },
+  {
+    "mistweaverco/kulala.nvim",
+    keys = {
+      { "<leader>Rs", desc = "Send request" },
+      { "<leader>Ra", desc = "Send all requests" },
+      { "<leader>Rb", desc = "Open scratchpad" },
+    },
+    ft = { "http", "rest" },
+    opts = {
+      -- your configuration comes here
+      global_keymaps = false,
+    },
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
 }
