@@ -12,6 +12,7 @@ return {
       require "configs.lspconfig"
     end,
   },
+  { "echasnovski/mini.nvim", version = "*" },
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
