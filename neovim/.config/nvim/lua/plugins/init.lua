@@ -266,4 +266,11 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  {
+    "fasterius/simple-zoom.nvim",
+    config = true,
+    keys = {
+      { "<leader>z", ":SimpleZoomToggle<CR>", desc = "toggle zoom" },
+    },
+  },
 }
