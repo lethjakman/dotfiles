@@ -20,6 +20,8 @@ local servers = {
   "sqlls",
   "vtsls",
   "buf_ls",
+  "just",
+  "vimls",
 }
 vim.lsp.enable(servers)
 
