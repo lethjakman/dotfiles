@@ -273,4 +273,38 @@ return {
       { "<leader>z", ":SimpleZoomToggle<CR>", desc = "toggle zoom" },
     },
   },
+  {
+    "ruifm/gitlinker.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("gitlinker").setup {
+        callbacks = {
+          -- ["github.com"] = require"gitlinker.hosts".get_github_type_url,
+          -- ["gitlab.com"] = require"gitlinker.hosts".get_gitlab_type_url,
+          -- ["try.gitea.io"] = require"gitlinker.hosts".get_gitea_type_url,
+          -- ["codeberg.org"] = require"gitlinker.hosts".get_gitea_type_url,
+          -- ["bitbucket.org"] = require"gitlinker.hosts".get_bitbucket_type_url,
+          -- ["try.gogs.io"] = require"gitlinker.hosts".get_gogs_type_url,
+          -- ["git.sr.ht"] = require"gitlinker.hosts".get_srht_type_url,
+          -- ["git.launchpad.net"] = require"gitlinker.hosts".get_launchpad_type_url,
+          -- ["repo.or.cz"] = require"gitlinker.hosts".get_repoorcz_type_url,
+          -- ["git.kernel.org"] = require"gitlinker.hosts".get_cgit_type_url,
+          -- ["git.savannah.gnu.org"] = require"gitlinker.hosts".get_cgit_type_url
+        },
+        -- Optional: Add your custom configuration options here
+        -- For example, to set a default remote:
+        -- default_remote = "origin",
+      }
+    end,
+    keys = {
+      {
+        "<leader>go",
+        '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+        desc = "open in git remote frontend",
+      },
+    },
+    -- Optional: Lazy load the plugin if desired
+    -- For example, to load on a specific key mapping:
+    -- keys = { { "<leader>gl", "<cmd>Gitlinker<CR>", desc = "Open Git Link" } },
+  },
 }
