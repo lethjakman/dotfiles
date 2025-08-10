@@ -277,4 +277,48 @@ return {
       { "<leader>z", ":SimpleZoomToggle<CR>", desc = "toggle zoom" },
     },
   },
+  {
+    "stevearc/overseer.nvim",
+    opts = {},
+    dependencies = { "nvim-telescope/telescope.nvim", "folke/snacks.nvim" },
+    keys = {
+      -- Basic task management
+      { "<leader>oo", "<cmd>OverseerToggle<cr>", desc = "Toggle Overseer" },
+      { "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run task" },
+      { "<leader>oq", "<cmd>OverseerQuickAction<cr>", desc = "Quick action" },
+      { "<leader>oi", "<cmd>OverseerInfo<cr>", desc = "Overseer Info" },
+
+      -- Task building and templates
+      { "<leader>ob", "<cmd>OverseerBuild<cr>", desc = "Build task" },
+      { "<leader>ot", "<cmd>OverseerTaskAction<cr>", desc = "Task action" },
+
+      -- Task bundles (saved task collections)
+      { "<leader>os", "<cmd>OverseerSaveBundle<cr>", desc = "Save task bundle" },
+      { "<leader>ol", "<cmd>OverseerLoadBundle<cr>", desc = "Load task bundle" },
+      { "<leader>od", "<cmd>OverseerDeleteBundle<cr>", desc = "Delete task bundle" },
+    },
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      picker = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+    },
+  },
 }
