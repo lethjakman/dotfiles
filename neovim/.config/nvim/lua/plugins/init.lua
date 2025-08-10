@@ -84,8 +84,12 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^3", -- Recommended
-    ft = { "rust" },
+    version = "^6", -- Recommended
+    lazy = false, -- This plugin is already lazy
+    init = function()
+      -- Configure rustaceanvim here
+      vim.g.rustaceanvim = {}
+    end,
   },
   {
     "vhyrro/luarocks.nvim",

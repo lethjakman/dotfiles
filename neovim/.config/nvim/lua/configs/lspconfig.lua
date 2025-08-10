@@ -11,7 +11,7 @@ local servers = {
   "tflint",
   "jsonls",
   "ruff",
-  "rust_analyzer",
+  -- "rust_analyzer",
   "bashls",
   "marksman",
   "ansiblels",
