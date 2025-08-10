@@ -51,15 +51,15 @@ return {
   --   end,
   -- },
 
-  {
-    "ggandor/leap.nvim",
-    -- opts = overrides.leap,
-    lazy = false,
-    config = function()
-      -- require("leap").create_default_mappings()
-    end,
-    enabled = true,
-  },
+  -- {
+  --   "ggandor/leap.nvim",
+  --   -- opts = overrides.leap,
+  --   lazy = false,
+  --   config = function()
+  --     -- require("leap").create_default_mappings()
+  --   end,
+  --   enabled = true,
+  -- },
 
   {
     "kylechui/nvim-surround",
@@ -161,7 +161,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    lazy = false,
+    -- lazy = false,
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     keys = {
