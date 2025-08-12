@@ -35,31 +35,6 @@ return {
   -- override plugin configs
 
   -- Install a plugin
-  -- {
-  --   "stevearc/conform.nvim",
-  --   event = "BufWritePre", -- uncomment for format on save
-  --   lazy = false,
-  --   config = function()
-  --     require "configs.conform"
-  --   end,
-  -- },
-  -- {
-  --   "max397574/better-escape.nvim",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("better_escape").setup()
-  --   end,
-  -- },
-
-  -- {
-  --   "ggandor/leap.nvim",
-  --   -- opts = overrides.leap,
-  --   lazy = false,
-  --   config = function()
-  --     -- require("leap").create_default_mappings()
-  --   end,
-  --   enabled = true,
-  -- },
 
   {
     "kylechui/nvim-surround",
