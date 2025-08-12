@@ -51,15 +51,15 @@ return {
   --   end,
   -- },
 
-  {
-    "ggandor/leap.nvim",
-    -- opts = overrides.leap,
-    lazy = false,
-    config = function()
-      -- require("leap").create_default_mappings()
-    end,
-    enabled = true,
-  },
+  -- {
+  --   "ggandor/leap.nvim",
+  --   -- opts = overrides.leap,
+  --   lazy = false,
+  --   config = function()
+  --     -- require("leap").create_default_mappings()
+  --   end,
+  --   enabled = true,
+  -- },
 
   {
     "kylechui/nvim-surround",
@@ -84,8 +84,12 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^3", -- Recommended
-    ft = { "rust" },
+    version = "^6", -- Recommended
+    lazy = false, -- This plugin is already lazy
+    init = function()
+      -- Configure rustaceanvim here
+      vim.g.rustaceanvim = {}
+    end,
   },
   {
     "vhyrro/luarocks.nvim",
@@ -157,7 +161,7 @@ return {
   },
   {
     "folke/trouble.nvim",
-    lazy = false,
+    -- lazy = false,
     opts = {}, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     keys = {
@@ -274,37 +278,47 @@ return {
     },
   },
   {
-    "ruifm/gitlinker.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("gitlinker").setup {
-        callbacks = {
-          -- ["github.com"] = require"gitlinker.hosts".get_github_type_url,
-          -- ["gitlab.com"] = require"gitlinker.hosts".get_gitlab_type_url,
-          -- ["try.gitea.io"] = require"gitlinker.hosts".get_gitea_type_url,
-          -- ["codeberg.org"] = require"gitlinker.hosts".get_gitea_type_url,
-          -- ["bitbucket.org"] = require"gitlinker.hosts".get_bitbucket_type_url,
-          -- ["try.gogs.io"] = require"gitlinker.hosts".get_gogs_type_url,
-          -- ["git.sr.ht"] = require"gitlinker.hosts".get_srht_type_url,
-          -- ["git.launchpad.net"] = require"gitlinker.hosts".get_launchpad_type_url,
-          -- ["repo.or.cz"] = require"gitlinker.hosts".get_repoorcz_type_url,
-          -- ["git.kernel.org"] = require"gitlinker.hosts".get_cgit_type_url,
-          -- ["git.savannah.gnu.org"] = require"gitlinker.hosts".get_cgit_type_url
-        },
-        -- Optional: Add your custom configuration options here
-        -- For example, to set a default remote:
-        -- default_remote = "origin",
-      }
-    end,
+    "stevearc/overseer.nvim",
+    opts = {},
+    dependencies = { "nvim-telescope/telescope.nvim", "folke/snacks.nvim" },
     keys = {
-      {
-        "<leader>go",
-        '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
-        desc = "open in git remote frontend",
-      },
+      -- Basic task management
+      { "<leader>oo", "<cmd>OverseerToggle<cr>", desc = "Toggle Overseer" },
+      { "<leader>or", "<cmd>OverseerRun<cr>", desc = "Run task" },
+      { "<leader>oq", "<cmd>OverseerQuickAction<cr>", desc = "Quick action" },
+      { "<leader>oi", "<cmd>OverseerInfo<cr>", desc = "Overseer Info" },
+
+      -- Task building and templates
+      { "<leader>ob", "<cmd>OverseerBuild<cr>", desc = "Build task" },
+      { "<leader>ot", "<cmd>OverseerTaskAction<cr>", desc = "Task action" },
+
+      -- Task bundles (saved task collections)
+      { "<leader>os", "<cmd>OverseerSaveBundle<cr>", desc = "Save task bundle" },
+      { "<leader>ol", "<cmd>OverseerLoadBundle<cr>", desc = "Load task bundle" },
+      { "<leader>od", "<cmd>OverseerDeleteBundle<cr>", desc = "Delete task bundle" },
     },
-    -- Optional: Lazy load the plugin if desired
-    -- For example, to load on a specific key mapping:
-    -- keys = { { "<leader>gl", "<cmd>Gitlinker<CR>", desc = "Open Git Link" } },
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = true },
+      dashboard = { enabled = true },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      picker = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = { enabled = true },
+      words = { enabled = true },
+    },
   },
 }
