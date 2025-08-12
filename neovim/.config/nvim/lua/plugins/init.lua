@@ -12,7 +12,15 @@ return {
       require "configs.lspconfig"
     end,
   },
-  { "echasnovski/mini.nvim", version = "*" },
+  {
+    "echasnovski/mini.nvim",
+    version = "*",
+    config = function()
+      require("mini.pick").setup()
+      -- Shouldn't need this but I do for some reason
+      vim.ui.select = require("mini.pick").ui_select
+    end,
+  },
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
@@ -279,7 +287,8 @@ return {
   {
     "stevearc/overseer.nvim",
     opts = {},
-    dependencies = { "nvim-telescope/telescope.nvim", "folke/snacks.nvim" },
+    -- dependencies = { "nvim-telescope/telescope.nvim", "folke/snacks.nvim" },
+    dependencies = { "nvim-telescope/telescope.nvim", "echasnovski/mini.nvim" },
     keys = {
       -- Basic task management
       { "<leader>oo", "<cmd>OverseerToggle<cr>", desc = "Toggle Overseer" },
@@ -306,18 +315,18 @@ return {
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
-      bigfile = { enabled = true },
-      dashboard = { enabled = true },
-      explorer = { enabled = true },
-      indent = { enabled = true },
-      input = { enabled = true },
-      picker = { enabled = true },
-      notifier = { enabled = true },
-      quickfile = { enabled = true },
-      scope = { enabled = true },
-      scroll = { enabled = true },
-      statuscolumn = { enabled = true },
-      words = { enabled = true },
+      -- bigfile = { enabled = true },
+      -- dashboard = { enabled = true },
+      -- explorer = { enabled = true },
+      -- indent = { enabled = true },
+      -- input = { enabled = true },
+      -- picker = { enabled = true },
+      -- notifier = { enabled = true },
+      -- quickfile = { enabled = true },
+      -- scope = { enabled = true },
+      -- scroll = { enabled = true },
+      -- statuscolumn = { enabled = true },
+      -- words = { enabled = true },
     },
   },
 }
