@@ -329,4 +329,17 @@ return {
       -- words = { enabled = true },
     },
   },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "folke/trouble.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    keys = {
+      { "<leader>td", "<cmd>Trouble todo<cr>", desc = "Toggle Overseer" },
+      { "<leader>tD", "<cmd>TodoTelescope<cr>", desc = "Toggle Overseer" },
+    },
+  },
 }
