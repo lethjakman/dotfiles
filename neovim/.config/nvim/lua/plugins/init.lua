@@ -342,4 +342,14 @@ return {
       { "<leader>tD", "<cmd>TodoTelescope<cr>", desc = "Toggle Overseer" },
     },
   },
+  {
+    "benfowler/telescope-luasnip.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("telescope").load_extension "luasnip"
+    end,
+    keys = {
+      { "<leader>fs", "<cmd>Telescope luasnip<cr>", desc = "telescope luasnip" },
+    },
+  },
 }
