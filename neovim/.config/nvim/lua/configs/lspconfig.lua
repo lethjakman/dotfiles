@@ -26,6 +26,18 @@ local servers = {
 }
 vim.lsp.enable(servers)
 
+vim.lsp.config("gopls", {
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  },
+})
+
 -- read :h vim.lsp.config for changing options of lsp servers
 -- for _, lsp in ipairs(servers) do
 --   lspconfig[lsp].setup {
