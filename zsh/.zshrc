@@ -133,4 +133,11 @@ bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
 
+
+# Lazygit
+# TODO: Delete when no longer needed 
+# https://github.com/jesseduffield/lazygit/issues/1669
+# Configure XDG home for lazygit
+export XDG_CONFIG_HOME="$HOME/.config"
+
 alias psql=pgcli
