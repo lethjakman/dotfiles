@@ -11,6 +11,8 @@ map("n", "<C-k>", ":TmuxNavigateUp<cr>", { desc = "switch window up" })
 
 map("n", "<leader>gb", "<cmd>Gitsigns blame<cr>", { desc = "Git blame" })
 
+map("n", "<leader>fr", "<cmd>Telescope resume<cr>", { desc = "Telescope resume" })
+
 -- map("n", ";", ":", { desc = "CMD enter command mode" })
 -- map("i", "jk", "<ESC>")
 
