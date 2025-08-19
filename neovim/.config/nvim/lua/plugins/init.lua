@@ -141,6 +141,124 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/neotest-vim-test",
     },
+    keys = {
+      -- Test running
+      {
+        "<leader>tn",
+        function()
+          require("neotest").run.run()
+        end,
+        desc = "Run nearest test",
+      },
+      {
+        "<leader>tf",
+        function()
+          require("neotest").run.run(vim.fn.expand "%")
+        end,
+        desc = "Run current file tests",
+      },
+      {
+        "<leader>ta",
+        function()
+          require("neotest").run.run(vim.fn.getcwd())
+        end,
+        desc = "Run all tests",
+      },
+      {
+        "<leader>tr",
+        function()
+          require("neotest").run.run_last()
+        end,
+        desc = "Run last test",
+      },
+      {
+        "<leader>tk",
+        function()
+          require("neotest").run.stop()
+        end,
+        desc = "Stop test",
+      },
+
+      -- Debug tests (requires nvim-dap)
+      {
+        "<leader>td",
+        function()
+          require("neotest").run.run { strategy = "dap" }
+        end,
+        desc = "Debug nearest test",
+      },
+      {
+        "<leader>tD",
+        function()
+          require("neotest").run.run { vim.fn.expand "%", strategy = "dap" }
+        end,
+        desc = "Debug current file tests",
+      },
+
+      -- Test UI
+      {
+        "<leader>to",
+        function()
+          require("neotest").output.open { enter = true, auto_close = true }
+        end,
+        desc = "Open test output",
+      },
+      {
+        "<leader>tO",
+        function()
+          require("neotest").output_panel.toggle()
+        end,
+        desc = "Toggle output panel",
+      },
+      {
+        "<leader>tt",
+        function()
+          require("neotest").summary.toggle()
+        end,
+        desc = "Toggle test summary",
+      },
+
+      -- Navigation
+      {
+        "]t",
+        function()
+          require("neotest").jump.next { status = "failed" }
+        end,
+        desc = "Jump to next failed test",
+      },
+      {
+        "[t",
+        function()
+          require("neotest").jump.prev { status = "failed" }
+        end,
+        desc = "Jump to prev failed test",
+      },
+
+      -- Watch mode
+      {
+        "<leader>tw",
+        function()
+          require("neotest").watch.toggle()
+        end,
+        desc = "Toggle watch mode",
+      },
+      {
+        "<leader>tW",
+        function()
+          require("neotest").watch.toggle(vim.fn.expand "%")
+        end,
+        desc = "Toggle watch current file",
+      },
+
+      -- Marks (for running specific tests)
+      {
+        "<leader>tm",
+        function()
+          require("neotest").run.run { suite = false, extra_args = { "--verbose" } }
+        end,
+        desc = "Run marked tests",
+      },
+    },
   },
   {
     "folke/trouble.nvim",
@@ -371,8 +489,8 @@ return {
       -- refer to the configuration section below
     },
     keys = {
-      { "<leader>td", "<cmd>Trouble todo<cr>", desc = "Toggle Overseer" },
-      { "<leader>tD", "<cmd>TodoTelescope<cr>", desc = "Toggle Overseer" },
+      { "<leader>lt", "<cmd>Trouble todo<cr>", desc = "Trouble TODO" },
+      { "<leader>lT", "<cmd>TodoTelescope<cr>", desc = "Telescope TODO" },
     },
   },
   {
