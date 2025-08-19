@@ -113,7 +113,65 @@ return {
       },
     },
   },
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    keys = {
+      -- Basic DAP UI controls
+      {
+        "<leader>du",
+        function()
+          require("dapui").toggle()
+        end,
+        desc = "Toggle DAP UI",
+      },
+      {
+        "<leader>de",
+        function()
+          require("dapui").eval()
+        end,
+        desc = "Evaluate expression",
+        mode = { "n", "v" },
+      },
+      {
+        "<leader>dE",
+        function()
+          require("dapui").eval(vim.fn.input "Expression: ")
+        end,
+        desc = "Evaluate input expression",
+      },
+      {
+        "<leader>df",
+        function()
+          require("dapui").float_element()
+        end,
+        desc = "Float DAP element",
+      },
+      {
+        "<leader>dr",
+        function()
+          require("dapui").open { reset = true }
+        end,
+        desc = "Reset DAP UI layout",
+      },
+
+      -- DAP UI element toggles
+      {
+        "<leader>ds",
+        function()
+          require("dapui").toggle { layout = 1 }
+        end,
+        desc = "Toggle DAP sidebar",
+      },
+      {
+        "<leader>dt",
+        function()
+          require("dapui").toggle { layout = 2 }
+        end,
+        desc = "Toggle DAP tray",
+      },
+    },
+  },
   {
     "nvim-neotest/neotest",
     ft = { "go", "python" },
@@ -128,6 +186,7 @@ return {
           require "neotest-vim-test" {
             ignore_file_types = { "python", "vim", "lua" },
           },
+          require "rustaceanvim.neotest",
         },
       }
     end,
