@@ -174,19 +174,19 @@ return {
   },
   {
     "nvim-neotest/neotest",
-    ft = { "go", "python" },
+    ft = { "go", "python", "rust" },
     config = function()
       require("neotest").setup {
         adapters = {
           require "neotest-python" {
             dap = { justMyCode = false },
           },
-          require "neotest-golang",
           require "neotest-plenary",
+          require "rustaceanvim.neotest",
+          require "neotest-golang",
           require "neotest-vim-test" {
             ignore_file_types = { "python", "vim", "lua" },
           },
-          require "rustaceanvim.neotest",
         },
       }
     end,
@@ -194,11 +194,13 @@ return {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "nvim-neotest/neotest-plenary",
-      "nvim-neotest/neotest-python",
-      "fredrikaverpil/neotest-golang",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
+
+      "nvim-neotest/neotest-python",
+      "fredrikaverpil/neotest-golang",
       "nvim-neotest/neotest-vim-test",
+      "mrcjkb/rustaceanvim",
     },
     keys = {
       -- Test running
