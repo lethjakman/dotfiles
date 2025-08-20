@@ -5,6 +5,8 @@ return {
     opts = require "configs.conform",
   },
 
+  { import = "nvchad.blink.lazyspec" },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
@@ -266,7 +268,7 @@ return {
           },
           require "neotest-plenary",
           require "rustaceanvim.neotest",
-          require "neotest-golang",
+          require "neotest-go",
           require "neotest-vim-test" {
             ignore_file_types = { "python", "vim", "lua" },
           },
@@ -281,8 +283,7 @@ return {
       "nvim-treesitter/nvim-treesitter",
 
       "nvim-neotest/neotest-python",
-      "fredrikaverpil/neotest-golang",
-      "nvim-neotest/neotest-golang",
+      "nvim-neotest/neotest-go",
       "nvim-neotest/neotest-vim-test",
       "mrcjkb/rustaceanvim",
     },
