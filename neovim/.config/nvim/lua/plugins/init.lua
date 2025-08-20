@@ -73,6 +73,9 @@ return {
       -- Configure rustaceanvim here
       vim.g.rustaceanvim = {}
     end,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
   },
   {
     "vhyrro/luarocks.nvim",
@@ -114,8 +117,88 @@ return {
     },
   },
   {
+    "mfussenegger/nvim-dap",
+    lazy = true,
+    -- Copied from LazyVim/lua/lazyvim/plugins/extras/dap/core.lua and
+    -- modified.
+    keys = {
+      {
+        "<leader>db",
+        function()
+          require("dap").toggle_breakpoint()
+        end,
+        desc = "Toggle Breakpoint",
+      },
+
+      {
+        "<leader>dc",
+        function()
+          require("dap").continue()
+        end,
+        desc = "Continue",
+      },
+
+      {
+        "<leader>dC",
+        function()
+          require("dap").run_to_cursor()
+        end,
+        desc = "Run to Cursor",
+      },
+
+      {
+        "<leader>dT",
+        function()
+          require("dap").terminate()
+        end,
+        desc = "Terminate",
+      },
+    },
+  },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    ---@type MasonNvimDapSettings
+    opts = {
+      -- This line is essential to making automatic installation work
+      -- :exploding-brain
+      handlers = {},
+      automatic_installation = {
+        -- These will be configured by separate plugins.
+        exclude = {
+          "delve",
+          "python",
+        },
+      },
+      -- DAP servers: Mason will be invoked to install these if necessary.
+      ensure_installed = {
+        "bash",
+        "codelldb",
+        "python",
+      },
+    },
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "williamboman/mason.nvim",
+    },
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    config = true,
+    dependencies = {
+      "mfussenegger/nvim-dap",
+    },
+  },
+  {
     "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+      "jay-babu/mason-nvim-dap.nvim",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = function()
+      require("dapui").setup()
+    end,
     keys = {
       -- Basic DAP UI controls
       {
@@ -123,7 +206,7 @@ return {
         function()
           require("dapui").toggle()
         end,
-        desc = "Toggle DAP UI",
+        desc = "Dap UI",
       },
       {
         "<leader>de",
@@ -199,6 +282,7 @@ return {
 
       "nvim-neotest/neotest-python",
       "fredrikaverpil/neotest-golang",
+      "nvim-neotest/neotest-golang",
       "nvim-neotest/neotest-vim-test",
       "mrcjkb/rustaceanvim",
     },
