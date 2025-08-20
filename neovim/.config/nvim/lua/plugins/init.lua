@@ -293,35 +293,35 @@ return {
         function()
           require("neotest").run.run()
         end,
-        desc = "Run nearest test",
+        desc = "Neotest Run nearest test",
       },
       {
         "<leader>tf",
         function()
           require("neotest").run.run(vim.fn.expand "%")
         end,
-        desc = "Run current file tests",
+        desc = "Neotest Run current file tests",
       },
       {
         "<leader>ta",
         function()
           require("neotest").run.run(vim.fn.getcwd())
         end,
-        desc = "Run all tests",
+        desc = "Neotest Run all tests",
       },
       {
         "<leader>tr",
         function()
           require("neotest").run.run_last()
         end,
-        desc = "Run last test",
+        desc = "Neotest Run last test",
       },
       {
         "<leader>tk",
         function()
           require("neotest").run.stop()
         end,
-        desc = "Stop test",
+        desc = "Neotest Stop test",
       },
 
       -- Debug tests (requires nvim-dap)
@@ -330,14 +330,14 @@ return {
         function()
           require("neotest").run.run { strategy = "dap" }
         end,
-        desc = "Debug nearest test",
+        desc = "DAP Debug nearest test",
       },
       {
         "<leader>tD",
         function()
           require("neotest").run.run { vim.fn.expand "%", strategy = "dap" }
         end,
-        desc = "Debug current file tests",
+        desc = "DAP Debug current file tests",
       },
 
       -- Test UI
@@ -346,21 +346,21 @@ return {
         function()
           require("neotest").output.open { enter = true, auto_close = true }
         end,
-        desc = "Open test output",
+        desc = "Neotest Open test output",
       },
       {
         "<leader>tO",
         function()
           require("neotest").output_panel.toggle()
         end,
-        desc = "Toggle output panel",
+        desc = "Neotest Toggle output panel",
       },
       {
         "<leader>tt",
         function()
           require("neotest").summary.toggle()
         end,
-        desc = "Toggle test summary",
+        desc = "Neotest Toggle test summary",
       },
 
       -- Navigation
