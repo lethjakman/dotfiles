@@ -5,7 +5,7 @@ return {
     opts = require "configs.conform",
   },
 
-  { import = "nvchad.blink.lazyspec" },
+  -- { import = "nvchad.blink.lazyspec" },
 
   -- These are some examples, uncomment them if you want to see them work!
   {
