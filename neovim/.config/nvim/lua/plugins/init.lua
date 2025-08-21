@@ -27,15 +27,37 @@ return {
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        -- basic
+        "lua",
+        "vim",
+        "vimdoc",
+        -- languages
+        "css",
+        "dockerfile",
+        "go",
+        "html",
+        "javascript",
+        "markdown",
+        "python",
+        "rust",
+        "sql",
+        "terraform",
+        "typescript",
+        -- config
+        "cmake",
+        "jq",
+        "json",
+        "just",
+        "make",
+        "regex",
+        "yaml",
+      },
+    },
+  },
   "NvChad/nvcommunity",
   { import = "nvcommunity.motion.hop" },
   { import = "nvcommunity.file-explorer.oil-nvim" },
