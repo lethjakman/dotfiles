@@ -57,7 +57,7 @@ return {
         "lua",
         "make",
         "markdown",
-        "norg",
+        -- "norg",
         "passwd",
         "python",
         "regex",
